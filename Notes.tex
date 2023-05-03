@@ -1,0 +1,294 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[english]{babel}
+\usepackage{amsthm}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{braket}
+
+\usepackage{tikz}
+\usetikzlibrary{quantikz}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\usepackage{graphicx}
+\graphicspath{ {./} }
+
+\usepackage{biblatex}
+\addbibresource{sample.bib}
+
+\title{Notes}
+\author{Emil Sayahi}
+\date{3 May 2023}
+
+\begin{document}
+
+\maketitle
+
+% \section{Introduction}
+
+% Hello Dr Mirza! This is a test document; here is some \textbf{bold text}, some \emph{italicised text}, and, lastly, an inline equation: $y = mx + b$.
+
+% Below is a table of some $x$ and $y$ values modeled by the following equation:\\
+% \[ y = 2x + 1 \]\\
+
+% \begin{tabular}{|l|l|}
+%     \hline
+%     x & y\\
+%     \hline
+%     0 & 1\\
+%     \hline
+%     1 & 3\\
+%     \hline
+%     2 & 5\\
+%     \hline
+%     3 & 7\\
+%     \hline
+%     4 & 9\\
+%     \hline
+%     5 & 11\\
+%     \hline
+% \end{tabular}\\
+
+% Here is the Miami University logo:\\
+
+% \includegraphics[scale=0.25]{miami-university.png}\\
+
+% Here is one \cite{einstein} citation---and here is a second \cite{dirac} citation.
+
+% \printbibliography
+
+\section{Chapter 1 --- Introduction to Superposition}
+
+\begin{definition}
+    \emph{Classical superposition} refers to when two physical quantities are added together to make a new, third one. An example would be constructive or destructive interference with two waves.
+\end{definition}
+\begin{definition}
+    On the quantum scale, objects have properties which can exist in a state of \emph{quantum superposition}. We say that some of their properties, rather than being continuous, can have values inside a set of possible values---such properties are \emph{quantised}. A quantum superposition refers to when a quantised property is not in one discrete state. For example, think of a coin being tossed. The coin, when it lands, can only have two values: heads or tails---this is referred to as having a \emph{definite state}. Until it lands, however, it is both heads and tails simultaneously.
+\end{definition}
+
+\section{Chapter 2 --- What Is a Qubit?}
+
+\begin{definition}
+    Qubits are the quantum equivalent of classical bits. They can be expressed with \emph{Dirac notation} (eg, $\ket{a}$ refers to a column vector, $a$, while $\bra{b}$ refers to a row vector, $b$).
+\end{definition}
+\begin{definition}
+    Quantum states in a superposition can be expressed as $\alpha \ket{a} + \beta \ket{b}$, where $\alpha$ and $\beta$ are the probability amplitudes for the $\ket{a}$ and $\ket{b}$ states, respectively. The \emph{normalisation rule} is that $\alpha^2 + \beta^2 = 1$; the amplitudes are the square-roots of the probabilities.
+\end{definition}
+
+We can express the following quantum state, $\ket{\Psi} = \alpha{\ket{0}} + \beta{\ket{1}}$, with the vector $\ket{\Psi} = \begin{pmatrix}
+\alpha\\
+\beta
+\end{pmatrix}$, where $\ket{0} = \begin{pmatrix}
+    1\\
+    0
+\end{pmatrix}$ and $\ket{1} = \begin{pmatrix}
+    0\\
+    1
+\end{pmatrix}$.
+
+\begin{definition}
+    If you multiply a matrix, $A$, by its conjugate transpose, $A^{\dagger}$, and the result is a matrix with $1$s in its main diagonal but $0$s elsewhere (an \emph{identity matrix}), then the original matrix ($A$) is called a \emph{unitary matrix}.
+\end{definition}
+
+\begin{definition}
+    A \emph{Bloch sphere} can be used to visually represent a quantum state. If an arrow in the sphere is pointing toward one of the poles, it is a definite state. Otherwise, the state is in a superposition.
+\end{definition}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=2]
+        % Axes
+        \draw[->] (0,0)--(1.2,0) node[right] {$\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$};
+        \draw[->] (0,0)--(0,1.2) node[above] {$\ket{0}$};
+        \draw[->] (0,0)--(0,-1.2) node[below] {$\ket{1}$};
+        \draw[->] (0,0)--(-1.2,0) node[left] {$\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}$};
+        % \draw[->] (0,0)--(-.75,-.5) node[below left] {$x$};
+        % Vector and label node
+        % \draw[->] (0,0)--(.5,0.866);
+        % \draw (.4,.5)  node {${\mathbf v}$};
+        \draw (0,0) circle(1);
+        \draw[dashed] plot[domain=pi:2*pi] ({cos(\x r)},{.2*sin(\x r)});
+        \draw[dashed] plot[domain=0:pi] ({cos(\x r)},{.2*sin(\x r)});
+    \end{tikzpicture}\\
+    \caption{A Bloch sphere representation of the quantum state $\ket{\Psi} = \alpha{\ket{0}} + \beta{\ket{1}}$.}
+    \label{fig:ch2fig1}
+\end{figure}
+
+\subsection{Single Qubit Gates}
+\subsubsection{\emph{X} (`NOT') Gate}
+This gate flips a definite state ($\ket{0} \leftrightarrow \ket{1}$); if a qubit is in a superposition, then the superposition also flips.
+
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}
+        \lstick{$\alpha \ket{0} + \beta \ket{1}$} & \gate{X} & \qw \rstick{$\beta \ket{0} + \alpha \ket{1}$}
+    \end{quantikz}
+    \caption{The probability amplitudes flip.}
+\end{figure}
+
+The quantum `NOT' gate can be represented as the following matrix:\\
+\[ X = \begin{pmatrix}
+    0 & 1\\
+    1 & 0
+\end{pmatrix} \].
+
+\subsubsection{Hadamard Gate}
+The Hadamard gate takes a qubit in a definite $\ket{0}$ or $\ket{1}$ state, and puts it in a superposition of $\ket{0}$ and $\ket{1}$ states.
+
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}
+        \lstick{$\ket{0}$} & \gate{H} & \qw \rstick{$\frac{1}{\sqrt{2}} (\ket{0} + \ket{1})$}
+    \end{quantikz}
+    \caption{The initial definite $\ket{0}$ state of the qubit becomes a $\ket{+}$ superposition state.}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}
+        \lstick{$\ket{1}$} & \gate{H} & \qw \rstick{$\frac{1}{\sqrt{2}} (\ket{0} - \ket{1})$}
+    \end{quantikz}
+    \caption{The initial definite $\ket{1}$ state of the qubit becomes a $\ket{-}$ superposition state.}
+\end{figure}
+
+The Hadamard gate can be represented as the following matrix:\\
+\[ H = \frac{1}{\sqrt{2}} \begin{pmatrix}
+    1 & 1\\
+    1 & -1
+\end{pmatrix} \].
+
+\subsubsection{\emph{Z} Gate}
+The $Z$ gate leaves the $\ket{0}$ state unchanged, but flips the sign of the $\ket{1}$ state.
+
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}
+        \lstick{$\alpha \ket{0} + \beta \ket{1}$} & \gate{Z} & \qw \rstick{$\alpha \ket{0} - \beta \ket{1}$}
+    \end{quantikz}
+    \caption{The state was flipped from a $\ket{+}$ state to a $\ket{-}$ state.}
+\end{figure}
+
+The $Z$ gate can be represented as the following matrix:\\
+\[ Z = \begin{pmatrix}
+    1 & 0\\
+    0 & -1
+\end{pmatrix} \].
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[node distance=1.5cm,on grid,auto]
+        \node[] (zero)   {$\ket{0}$};
+        \node[draw,rectangle,right of=zero] (x)   {$X$};
+        \node[right of=x] (one)   {$\ket{1}$};
+        \node[draw,rectangle,below of=zero] (h1)   {$H$};
+        \node[below of=h1] (plus)   {$\ket{+}$};
+        \node[draw,rectangle,right of=plus] (z)   {$Z$};
+        \node[draw,rectangle,below of=one] (h2)   {$H$};
+        \node[below of=h2] (minus)   {$\ket{-}$};
+        \path[shorten >= 0pt, shorten <= 0pt]
+            (zero)
+                edge node {} (x)
+                edge node {} (h1)
+            (x)
+                edge node {} (one)          
+            (one)
+                edge node {} (h2)
+            (h1)
+                edge node {} (plus)
+            (plus)
+                edge node {} (z)
+            (z)
+                edge node {} (minus)
+            (h2)
+                edge node {} (minus);
+    \end{tikzpicture}
+    \caption{The effects of the $X$, $H$, and $Z$ gates are related.}
+\end{figure}
+
+\subsection{Two-Qubit Gates}
+\subsubsection{`CNOT' (Controlled `NOT') Gate}
+The controlled `NOT' gate is used to entangle two qubits together. The gate takes in a control qubit, a target qubit, and outputs two qubits. The control qubit is untouched, but determines how the target qubit is effected; if the control qubit is $\ket{0}$, then the target qubit is unchanged, but if the control qubit is $\ket{1}$, then the target qubit is flipped ($\ket{0} \leftrightarrow \ket{1}$).
+
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}
+        \lstick{$\mathrm{Control}\ \ket{A}$} & \ctrl{1} & \qw \rstick{$\ket{A}$}\\
+        \lstick{$\mathrm{Target}\ \ket{B}$} & \targ{} & \qw \rstick{$\ket{A} \oplus \ket{B}$}
+    \end{quantikz}
+    \caption{A quantum circuit representing the behaviour of the `CNOT' gate.}
+\end{figure}
+
+The `CNOT' gate can be represented as the following matrix:\\
+\[ \mathrm{CNOT} = \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 0 & 1\\
+    0 & 0 & 1 & 0
+\end{pmatrix} \].
+
+\section{Section 2.1 --- Examples of Typical Machine Learning Problems}
+
+\subsection{Image recognition}
+A machine learning model can be given images as a matrix of pixels, and tasked with determining what human-recognisable objects are present in the image. In other words, the model can take in a matrix of pixels and determine the appropriate label for the pixel matrix.
+
+\subsection{Time series forecasting}
+A machine learning model can be given a series of data points recorded in consecutive time intervals, tasked with the task of forecasting future data points.
+
+\subsection{Hypothesis guessing}
+A machine learning model can be given data with some pattern or rules, which the model must determine to predict future elements of the data set. For example, given the vector $\begin{pmatrix}
+    4 & 16 & 36 & 100
+\end{pmatrix}$, a model could be tasked with completing the pattern until $200$.
+
+\subsection{Board games}
+In a context where a machine learning model is preforming actions within an action space, the model is referred to as an \emph{agent}. Often times, an agent can be taught to play a board game using \emph{reinforcement learning}, where the agent is rewarded for preforming positive actions and punished for preforming negative actions, where `negative' and `positive' refer to following pre-determined rules for how to behave, which can include how the action impacts the ultimate outcome---in the case of a board game, whether the action eventually leads to a win, loss, or, if the game allows, a draw. With this style of learning, an agent learns by trial and error.
+\begin{definition}
+    \emph{Deep learning} is a type of machine learning model, where there are several layers in a `neural network', each layer having at least one `neurone'. All of these artificial neurones are connected to every neurone in the adjacent layers. These neurones have `weights' (a tensor which is updated by training the model), `biases' (a constant term which is updated by training the model), and an `activation function' (which determines if the neurone `fires', or is activated, within the network). With a trained neural network, the input neurons (in the input layer) have their values tensor-multiplied ($\otimes$) with the weights of each connected layer, with the biases of those connected layers added to the resulting tensors. This is done with each successive layer until the output layer, where the values of each output neurone are collected.
+\end{definition}
+
+\section{Section 2.2 --- The Three Ingredients of a Learning Problem}
+\begin{definition}
+    A \emph{supervised learning task} is one in which the data set is labelled, and the task is to predict the appropriate label for a new, unclassified input.
+\end{definition}
+\begin{definition}
+    An \emph{unsupervised learning task} is one in which the data set is not labelled, and the task is to determine the appropriate classes present in the data set, and the elements which belong to each class.
+\end{definition}
+
+\subsubsection{Subsection 2.2.1 --- Data}
+\begin{definition}
+    A machine learning model, in a supervised learning context, attempts to minimise its mistakes; its accuracy can be modelled with another function, called a \emph{loss function}.
+\end{definition}
+In the context of unsupervised learning, clustering of elements in a data set is done using the distance between the elements.
+\begin{definition}
+    \emph{Feature selection} refers to the process of determining what variables, predictors, or features are relevant in constructing the appropriate model.
+\end{definition}
+A data set that has biases within it will result in models that reflect those same biases.
+\begin{definition}
+    A \emph{classification task} is concerned with labelling data elements with the class that they belong to.
+\end{definition}
+\begin{definition}
+    A \emph{regression task} is concerned with fitting a model to a data set, so that new data elements can be predicted.
+\end{definition}
+
+\subsubsection{Subsection 2.2.2 --- Model}
+\begin{definition}
+    A \emph{model} is something which can be used to approximate observed behaviour. In the context of statistics, data science, and machine learning, a model is a function which attempts to fit the behaviour of a data set.
+\end{definition}
+\begin{definition}
+    A \emph{deterministic model} is a model which provides predictions without a probability attached to it; the model is certain in its predictions, regardless of whether or not the predictions are accurate.
+\end{definition}
+\begin{definition}
+    A \emph{probabilistic model} is a model which is not certain in its predictions, but, instead, has some probability attached with its predictions.
+\end{definition}
+
+\subsubsection{Subsection 2.2.3 --- Loss}
+\begin{definition}
+    We can evaluate the performance of a model by using a \emph{loss function}---a common metric used to define loss is accuracy ($\mathrm{Accuracy} = \frac{\text{Number of correctly classified examples}}{Total number of examples}$). Regardless of what function we use to define loss, the \emph{error} is the complement of the loss ($\mathrm{Error} = 1 - \mathrm{Loss}$, where $\mathrm{Loss} = [0, 1)$).
+\end{definition}
+
+\end{document}
