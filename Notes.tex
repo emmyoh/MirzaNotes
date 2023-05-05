@@ -288,7 +288,17 @@ A data set that has biases within it will result in models that reflect those sa
 
 \subsubsection{Subsection 2.2.3 --- Loss}
 \begin{definition}
-    We can evaluate the performance of a model by using a \emph{loss function}---a common metric used to define loss is accuracy ($\mathrm{Accuracy} = \frac{\text{Number of correctly classified examples}}{Total number of examples}$). Regardless of what function we use to define loss, the \emph{error} is the complement of the loss ($\mathrm{Error} = 1 - \mathrm{Loss}$, where $\mathrm{Loss} = [0, 1)$).
+    We can evaluate the performance of a model by using a \emph{loss function}---a common metric used to define loss is accuracy ($\mathrm{Accuracy} = \frac{\text{Number of correctly classified examples}}{\text{Total number of examples}}$). Regardless of what function we use to define loss, the \emph{error} is the complement of the loss ($\mathrm{Error} = 1 - \mathrm{Loss}$, where $\mathrm{Loss} = [0, 1)$).
+\end{definition}
+
+\section{2.4 --- Training in Unsupervised Learning}
+There is no one standard approach to training in unsupervised learning, as the goal of `minimising loss' is difficult to define when we cannot automatically calculate a metric such as accuracy---a model which generates images of zebras, for example, cannot have its imagery automatically evaluated at the end. There are, however, some common approaches, including \emph{generative adversarial
+training} and \emph{two-sample testing}.
+\begin{definition}
+    A \emph{generative adversarial network} is a type of unsupervised learning model, where two models are trained simultaneously: a \emph{generator} and a \emph{discriminator}. The generator attempts to generate data which is similar to the training data, while the discriminator attempts to distinguish between the generated data and the training data. The generator is trained to fool the discriminator, while the discriminator is trained to not be fooled by the generator. Essentially, the generator is trained to generate data which is similar to the training data, while the discriminator is trained to distinguish between the training data and the generated data.
+\end{definition}
+\begin{definition}
+    \emph{Two-sample testing} is a method of unsupervised learning, where the goal is to determine whether two data sets are drawn from the same distribution. This is done by training a model to distinguish between the two data sets, and then evaluating the accuracy of the model.
 \end{definition}
 
 \end{document}
