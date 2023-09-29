@@ -24,7 +24,7 @@
 
 \title{Notes}
 \author{Emil Sayahi}
-\date{5 May 2023}
+\date{29 September 2023}
 
 \begin{document}
 
@@ -115,9 +115,8 @@ We can express the following quantum state, $\ket{\Psi} = \alpha{\ket{0}} + \bet
         \draw (0,0) circle(1);
         \draw[dashed] plot[domain=pi:2*pi] ({cos(\x r)},{.2*sin(\x r)});
         \draw[dashed] plot[domain=0:pi] ({cos(\x r)},{.2*sin(\x r)});
-    \end{tikzpicture}\\
-    \caption{A Bloch sphere representation of the quantum state $\ket{\Psi} = \alpha{\ket{0}} + \beta{\ket{1}}$.}
-    \label{fig:ch2fig1}
+    \end{tikzpicture}
+    \caption{A Bloch sphere representation of the quantum state $\ket{\Psi} = \alpha{\ket{0}} + \beta{\ket{1}}$.}\label{fig:ch2fig1}
 \end{figure}
 
 \subsection{Single Qubit Gates}
@@ -127,7 +126,7 @@ This gate flips a definite state ($\ket{0} \leftrightarrow \ket{1}$); if a qubit
 \begin{figure}[ht]
     \centering
     \begin{quantikz}
-        \lstick{$\alpha \ket{0} + \beta \ket{1}$} & \gate{X} & \qw \rstick{$\beta \ket{0} + \alpha \ket{1}$}
+        \lstick{$\alpha \ket{0} + \beta \ket{1}$} & \gate{X} & \qw{} \rstick{$\beta \ket{0} + \alpha \ket{1}$}
     \end{quantikz}
     \caption{The probability amplitudes flip.}
 \end{figure}
@@ -136,7 +135,7 @@ The quantum `NOT' gate can be represented as the following matrix:\\
 \[ X = \begin{pmatrix}
     0 & 1\\
     1 & 0
-\end{pmatrix} \].
+\end{pmatrix} .\]
 
 \subsubsection{Hadamard Gate}
 The Hadamard gate takes a qubit in a definite $\ket{0}$ or $\ket{1}$ state, and puts it in a superposition of $\ket{0}$ and $\ket{1}$ states.
@@ -144,7 +143,7 @@ The Hadamard gate takes a qubit in a definite $\ket{0}$ or $\ket{1}$ state, and 
 \begin{figure}[ht]
     \centering
     \begin{quantikz}
-        \lstick{$\ket{0}$} & \gate{H} & \qw \rstick{$\frac{1}{\sqrt{2}} (\ket{0} + \ket{1})$}
+        \lstick{$\ket{0}$} & \gate{H} & \qw{} \rstick{$\frac{1}{\sqrt{2}} (\ket{0} + \ket{1})$}
     \end{quantikz}
     \caption{The initial definite $\ket{0}$ state of the qubit becomes a $\ket{+}$ superposition state.}
 \end{figure}
@@ -152,7 +151,7 @@ The Hadamard gate takes a qubit in a definite $\ket{0}$ or $\ket{1}$ state, and 
 \begin{figure}[ht]
     \centering
     \begin{quantikz}
-        \lstick{$\ket{1}$} & \gate{H} & \qw \rstick{$\frac{1}{\sqrt{2}} (\ket{0} - \ket{1})$}
+        \lstick{$\ket{1}$} & \gate{H} & \qw{} \rstick{$\frac{1}{\sqrt{2}} (\ket{0} - \ket{1})$}
     \end{quantikz}
     \caption{The initial definite $\ket{1}$ state of the qubit becomes a $\ket{-}$ superposition state.}
 \end{figure}
@@ -161,7 +160,7 @@ The Hadamard gate can be represented as the following matrix:\\
 \[ H = \frac{1}{\sqrt{2}} \begin{pmatrix}
     1 & 1\\
     1 & -1
-\end{pmatrix} \].
+\end{pmatrix} .\]
 
 \subsubsection{\emph{Z} Gate}
 The $Z$ gate leaves the $\ket{0}$ state unchanged, but flips the sign of the $\ket{1}$ state.
@@ -169,7 +168,7 @@ The $Z$ gate leaves the $\ket{0}$ state unchanged, but flips the sign of the $\k
 \begin{figure}[ht]
     \centering
     \begin{quantikz}
-        \lstick{$\alpha \ket{0} + \beta \ket{1}$} & \gate{Z} & \qw \rstick{$\alpha \ket{0} - \beta \ket{1}$}
+        \lstick{$\alpha \ket{0} + \beta \ket{1}$} & \gate{Z} & \qw{} \rstick{$\alpha \ket{0} - \beta \ket{1}$}
     \end{quantikz}
     \caption{The state was flipped from a $\ket{+}$ state to a $\ket{-}$ state.}
 \end{figure}
@@ -178,7 +177,7 @@ The $Z$ gate can be represented as the following matrix:\\
 \[ Z = \begin{pmatrix}
     1 & 0\\
     0 & -1
-\end{pmatrix} \].
+\end{pmatrix} .\]
 
 \begin{figure}[ht]
     \centering
@@ -218,8 +217,8 @@ The controlled `NOT' gate is used to entangle two qubits together. The gate take
 \begin{figure}[ht]
     \centering
     \begin{quantikz}
-        \lstick{$\mathrm{Control}\ \ket{A}$} & \ctrl{1} & \qw \rstick{$\ket{A}$}\\
-        \lstick{$\mathrm{Target}\ \ket{B}$} & \targ{} & \qw \rstick{$\ket{A} \oplus \ket{B}$}
+        \lstick{$\mathrm{Control}\ \ket{A}$} & \ctrl{1} & \qw{} \rstick{$\ket{A}$}\\
+        \lstick{$\mathrm{Target}\ \ket{B}$} & \targ{} & \qw{} \rstick{$\ket{A} \oplus \ket{B}$}
     \end{quantikz}
     \caption{A quantum circuit representing the behaviour of the `CNOT' gate.}
 \end{figure}
@@ -230,7 +229,7 @@ The `CNOT' gate can be represented as the following matrix:\\
     0 & 1 & 0 & 0\\
     0 & 0 & 0 & 1\\
     0 & 0 & 1 & 0
-\end{pmatrix} \].
+\end{pmatrix} .\]
 
 \section{Section 2.1 --- Examples of Typical Machine Learning Problems}
 
@@ -288,7 +287,7 @@ A data set that has biases within it will result in models that reflect those sa
 
 \subsubsection{Subsection 2.2.3 --- Loss}
 \begin{definition}
-    We can evaluate the performance of a model by using a \emph{loss function}---a common metric used to define loss is accuracy ($\mathrm{Accuracy} = \frac{\text{Number of correctly classified examples}}{\text{Total number of examples}}$). Regardless of what function we use to define loss, the \emph{error} is the complement of the loss ($\mathrm{Error} = 1 - \mathrm{Loss}$, where $\mathrm{Loss} = [0, 1)$).
+    We can evaluate the performance of a model by using a \emph{loss function}---a common metric used to define loss is accuracy ($\mathrm{Accuracy} = \frac{\text{Number of correctly classified examples}}{\text{Total number of examples}}$). Regardless of what function we use to define loss, the \emph{error} is the complement of the loss ($\mathrm{Error} = 1 - \mathrm{Loss}$, where $\mathrm{Loss} = \left[0, 1\right)$).
 \end{definition}
 
 \section{2.4 --- Training in Unsupervised Learning}
@@ -299,6 +298,48 @@ training} and \emph{two-sample testing}.
 \end{definition}
 \begin{definition}
     \emph{Two-sample testing} is a method of unsupervised learning, where the goal is to determine whether two data sets are drawn from the same distribution. This is done by training a model to distinguish between the two data sets, and then evaluating the accuracy of the model.
+\end{definition}
+
+\section{Jaynes-Cummings Model}
+\begin{definition}
+    A frequency is called a `\emph{mode}' if it is a solution to the wave equation.
+\end{definition}
+
+\begin{definition}
+    The \emph{Jaynes-Cummings model} is a model which describes the interaction between an atom and some monomodal electromagnetic radiation. When the atom is hit by a photon, it absorbs it and moves to an excited state ($\ket{e}$); when the atom is in an excited state, it can emit a photon and move back to its ground state ($\ket{g}$). The total energy of the system---the Hamiltonian---is defined as $\hat{H} = \hat{H}_{\text{atom}} + \hat{H}_{\text{cavity}} + \hat{H}_{\text{interaction}}$.
+\end{definition}
+
+\subsubsection{Atom Hamiltonian}
+\begin{definition}
+    The \emph{atom Hamiltonian} is the \emph{Hamiltonian} of the atom, which is the sum of the kinetic energy of the atom and the potential energy of the atom.
+\end{definition}
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}
+        \lstick[2]{$\Omega = E_{e} - E_{g}$} & \qw{} & \qw{} & \qw{} \rstick{$\ket{0} = \ket{e}$}\\
+        \qw{} & \qw{} & \qw{} & \qw{} \rstick{$\ket{1} = \ket{g}$}
+    \end{quantikz}
+    \caption{The `two-level system' of an atom.}
+\end{figure}
+
+The energy of a photon, $E$, can be found with the equation $E = hf$, where $h$ is Planck's constant, and $f$ is the frequency of the photon. It follows from this relation between energy and frequency that the atom Hamiltonian is $\hat{H}_{\text{atom}} = \hbar \omega \sigma_{+}\sigma_{-}$, where $\omega$ is the frequency of the electromagnetic radiation, $\sigma_{+}$ is the atomic raising operator, and $\sigma_{-}$ is the atomic lowering operator.
+
+\begin{definition}
+    The \emph{atomic raising operator} is the operator which raises the atom from its ground state to its excited state, and is defined as $\sigma_{+} = \ket{e}\bra{g}$. The \emph{atomic lowering operator} is the operator which lowers the atom from its excited state to its ground state, and is defined as $\sigma_{-} = \ket{g}\bra{e}$.
+\end{definition}
+
+\subsubsection{Electromagnetic Field Hamiltonian}
+\begin{definition}
+    The \emph{photon creation operator}, $a^{+}$, is the operator which creates a photon, defined as $a^{+}\ket{n} = \sqrt{n + 1}\ket{n + 1}$. The \emph{photon annihilation operator}, $a^{-}$, is the operator which destroys a photon, defined as $a^{-}\ket{n} = \sqrt{n}\ket{n-1}$. The \emph{number operator} describes the number of photons in a system, defined as $a^{+}a^{-}\ket{n} = n\ket{n}$.
+\end{definition}
+
+\begin{definition}
+    The \emph{electromagnetic field Hamiltonian} is the Hamiltonian of the cavity---the space in which the electromagnetic radiation is contained---defined as $H_{\text{cavity}} = \hbar \omega_{c} (a^{+}a^{-})$, where $\omega_{c}$ is the frequency of a single photon.
+\end{definition}
+
+\subsubsection{Interaction Hamiltonian}
+\begin{definition}
+    The \emph{light-matter interaction Hamiltonian} is the Hamiltonian which describes the interaction between some monomodal electromagnetic radiation and a single atom, defined as $H_{\text{interaction}} = \hbar G (a^{+}\sigma_{-} + a^{-}\sigma_{+})$, where $G = \frac{\Omega}{2}$---the strength of the interaction between the atom and the electromagnetic field. $a^{+}\sigma_{-}$ is the process of the atom emitting a photon, falling to its ground state, while $a^{-}\sigma_{+}$ is the process of the atom absorbing a photon, rising to its excited state.
 \end{definition}
 
 \end{document}
