@@ -322,24 +322,24 @@ training} and \emph{two-sample testing}.
     \caption{The `two-level system' of an atom.}
 \end{figure}
 
-The energy of a photon, $E$, can be found with the equation $E = hf$, where $h$ is Planck's constant, and $f$ is the frequency of the photon. It follows from this relation between energy and frequency that the atom Hamiltonian is $\hat{H}_{\text{atom}} = \hbar \omega \sigma_{+}\sigma_{-}$, where $\omega$ is the frequency of the electromagnetic radiation, $\sigma_{+}$ is the atomic raising operator, and $\sigma_{-}$ is the atomic lowering operator.
+The energy of a photon, $E$, can be found with the equation $E = hf$, where $h$ is Planck's constant, and $f$ is the frequency of the photon. It follows from this relation between energy and frequency that the atom Hamiltonian is $\hat{H}_{\text{atom}} = \hbar \omega \hat{\sigma}_{+}\hat{\sigma}_{-}$, where $\omega$ is the frequency of the electromagnetic radiation, $\hat{\sigma}_{+}$ is the atomic raising operator, and $\hat{\sigma}_{-}$ is the atomic lowering operator.
 
 \begin{definition}
-    The \emph{atomic raising operator} is the operator which raises the atom from its ground state to its excited state, and is defined as $\sigma_{+} = \ket{e}\bra{g}$. The \emph{atomic lowering operator} is the operator which lowers the atom from its excited state to its ground state, and is defined as $\sigma_{-} = \ket{g}\bra{e}$.
+    The \emph{atomic raising operator} is the operator which raises the atom from its ground state to its excited state, and is defined as $\hat{\sigma}_{+} = \ket{e}\bra{g}$. The \emph{atomic lowering operator} is the operator which lowers the atom from its excited state to its ground state, and is defined as $\hat{\sigma}_{-} = \ket{g}\bra{e}$.
 \end{definition}
 
 \subsubsection{Electromagnetic Field Hamiltonian}
 \begin{definition}
-    The \emph{photon creation operator}, $a^{+}$, is the operator which creates a photon, defined as $a^{+}\ket{n} = \sqrt{n + 1}\ket{n + 1}$. The \emph{photon annihilation operator}, $a^{-}$, is the operator which destroys a photon, defined as $a^{-}\ket{n} = \sqrt{n}\ket{n-1}$. The \emph{number operator} describes the number of photons in a system, defined as $a^{+}a^{-}\ket{n} = n\ket{n}$.
+    The \emph{photon creation operator}, $\hat{a}^{+}$, is the operator which creates a photon, defined as $\hat{a}^{+}\ket{n} = \sqrt{n + 1}\ket{n + 1}$. The \emph{photon annihilation operator}, $\hat{a}^{-}$, is the operator which destroys a photon, defined as $\hat{a}^{-}\ket{n} = \sqrt{n}\ket{n-1}$. The \emph{number operator} describes the number of photons in a system, defined as $\hat{a}^{+}\hat{a}^{-}\ket{n} = n\ket{n}$.
 \end{definition}
 
 \begin{definition}
-    The \emph{electromagnetic field Hamiltonian} is the Hamiltonian of the cavity---the space in which the electromagnetic radiation is contained---defined as $H_{\text{cavity}} = \hbar \omega_{c} (a^{+}a^{-})$, where $\omega_{c}$ is the frequency of a single photon.
+    The \emph{electromagnetic field Hamiltonian} is the Hamiltonian of the cavity---the space in which the electromagnetic radiation is contained---defined as $H_{\text{cavity}} = \hbar \omega_{c} (\hat{a}^{+}\hat{a}^{-})$, where $\omega_{c}$ is the frequency of a single photon.
 \end{definition}
 
 \subsubsection{Interaction Hamiltonian}
 \begin{definition}
-    The \emph{light-matter interaction Hamiltonian} is the Hamiltonian which describes the interaction between some monomodal electromagnetic radiation and a single atom, defined as $H_{\text{interaction}} = \hbar G (a^{+}\sigma_{-} + a^{-}\sigma_{+})$, where $G = \frac{\Omega}{2}$---the strength of the interaction between the atom and the electromagnetic field. $a^{+}\sigma_{-}$ is the process of the atom emitting a photon, falling to its ground state, while $a^{-}\sigma_{+}$ is the process of the atom absorbing a photon, rising to its excited state.
+    The \emph{light-matter interaction Hamiltonian} is the Hamiltonian which describes the interaction between some monomodal electromagnetic radiation and a single atom, defined as $H_{\text{interaction}} = \hbar G (\hat{a}^{+}\hat{\sigma}_{-} + \hat{a}^{-}\hat{\sigma}_{+})$, where $G = \frac{\Omega}{2}$---the strength of the interaction between the atom and the electromagnetic field. $\hat{a}^{+}\hat{\sigma}_{-}$ is the process of the atom emitting a photon, falling to its ground state, while $\hat{a}^{-}\hat{\sigma}_{+}$ is the process of the atom absorbing a photon, rising to its excited state.
 \end{definition}
 
 \end{document}
