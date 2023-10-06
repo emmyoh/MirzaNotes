@@ -6,9 +6,9 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{braket}
+\usepackage{cancel}
 
 \usepackage{tikz}
 \usetikzlibrary{quantikz}
@@ -24,7 +24,7 @@
 
 \title{Notes}
 \author{Emil Sayahi}
-\date{29 September 2023}
+\date{6 October 2023}
 
 \begin{document}
 
@@ -334,12 +334,29 @@ The energy of a photon, $E$, can be found with the equation $E = hf$, where $h$ 
 \end{definition}
 
 \begin{definition}
-    The \emph{electromagnetic field Hamiltonian} is the Hamiltonian of the cavity---the space in which the electromagnetic radiation is contained---defined as $H_{\text{cavity}} = \hbar \omega_{c} (\hat{a}^{+}\hat{a}^{-})$, where $\omega_{c}$ is the frequency of a single photon.
+    The \emph{electromagnetic field Hamiltonian} is the Hamiltonian of the cavity---the space in which the electromagnetic radiation is contained---defined as $H_{\text{cavity}} = \hbar \omega (\hat{a}^{+}\hat{a}^{-})$, where $\omega$ is the frequency of a single photon.
 \end{definition}
 
 \subsubsection{Interaction Hamiltonian}
 \begin{definition}
     The \emph{light-matter interaction Hamiltonian} is the Hamiltonian which describes the interaction between some monomodal electromagnetic radiation and a single atom, defined as $H_{\text{interaction}} = \hbar G (\hat{a}^{+}\hat{\sigma}_{-} + \hat{a}^{-}\hat{\sigma}_{+})$, where $G = \frac{\Omega}{2}$---the strength of the interaction between the atom and the electromagnetic field. $\hat{a}^{+}\hat{\sigma}_{-}$ is the process of the atom emitting a photon, falling to its ground state, while $\hat{a}^{-}\hat{\sigma}_{+}$ is the process of the atom absorbing a photon, rising to its excited state.
 \end{definition}
+
+\subsection{Monomodal Single-Photon Problem}
+\begin{definition}
+    The \emph{Schrödinger equation} is the equation which describes how a quantum system changes with time, defined as $i \hbar \frac{\partial \ket{\Psi (t)}}{\partial t} = \hat{H}\ket{\Psi}$, where $\hat{H}$ is the Hamiltonian of the system.
+\end{definition}
+
+The state of the system is $\Psi(t) = C_{e}(t)\ket{e}\ket{0} + C_{g}(t)\ket{g}\ket{1}$; inserting the state and Hamiltonian into the Schrödinger equation yields $i \hbar \frac{\partial C_{e}(t)}{\partial t}\ket{e}\ket{0} + i \hbar \frac{\partial C_{g}(t)}{\partial t} \ket{g}\ket{1} = (\hbar \omega \hat{\sigma}_{+}\hat{\sigma}_{-} + \hbar \omega \hat{a}^{+}\hat{a}^{-} + \hbar G(\hat{a}^{+}\hat{\sigma}_{-} + \hat{a}^{-}\hat{\sigma}_{+}))(C_{e}(t)\ket{e}\ket{0} + C_{g}(t)\ket{g}\ket{1})$---$| C_{e}(t) |^{2}$ would be the probability of finding an atom in an excited state, and no photon in the cavity; $| C_{g}(t) |^{2}$ would be the probability of finding an atom in the ground state and one photon in the cavity.
+
+Multiplying the expressions of the prior equation would yield $\hbar \omega \hat{\sigma}_{+}\hat{\sigma}_{-} C_{e}(t) \ket{e}\ket{0} + \hbar \omega \hat{\sigma}_{+}\hat{\sigma}_{-} C_{g}(t) \cancelto{0}{\ket{g}}\ket{1} + \hbar \omega \hat{a}^{+}\hat{a}^{-} C_{e}(t) \ket{e}\cancelto{0}{\ket{0}} + \hbar \omega \hat{a}^{+}\hat{a}^{-} C_{g}(t) \ket{g}\ket{1} + \hbar G \hat{a}^{+}\hat{\sigma}_{-} C_{e}(t) \ket{e}\ket{0} + \hbar G \hat{a}^{+}\hat{\sigma}_{-} C_{g}(t) \cancelto{0}{\ket{g}}\cancelto{0}{\ket{1}} + \hbar G \hat{a}^{-}\hat{\sigma}_{+} C_{e}(t) \cancelto{0}{\ket{e}}\cancelto{0}{\ket{0}} + \hbar G \hat{a}^{-}\hat{\sigma}_{+} C_{g}(t) \ket{g}\ket{1} = \hbar \omega C_{e}(t) \ket{e}\ket{0} + \hbar \omega C_{g}(t) \ket{g}\ket{1} + \hbar G C_{e}(t) \ket{g}\ket{1} + \hbar G C_{g}(t) \ket{e}\ket{0}$, which is to say that $i \hbar \frac{\partial C_{e}(t)}{\partial t}\ket{e}\ket{0} + i \hbar \frac{\partial C_{g}(t)}{\partial t}\ket{g}\ket{1} = \hbar \omega C_{e}(t) \ket{e}\ket{0} + \hbar \omega C_{g}(t) \ket{g}\ket{1} + \hbar G C_{e}(t) \ket{g}\ket{1} + \hbar G C_{g}(t) \ket{e}\ket{0}$. Projection from the left side by $\bra{e}\bra{0}$ would yield $i \hbar \frac{\partial C_{e}(t)}{\partial t} = \hbar \omega C_{e}(t) + 0 + 0 + \hbar G C_{g}(t)$, while projection from the left side by $\bra{g}\bra{1}$ would yield $i \hbar \frac{\partial C_{g}(t)}{\partial t} = 0 + \hbar \omega C_{g}(t) + \hbar G C_{e}(t) + 0$.
+
+\subsection{Multimodal Three-Photon Problem}
+
+The state of the system is $\Psi(t) = C_{1}(t) \ket{g_{1}, g_{2}, g_{3}}\ket{3} + C_{2}(t) \ket{e_{1}, g_{2}, g_{3}}\ket{2} + C_{3}(t) \ket{g_{1}, e_{2}, g_{3}}\ket{2} + C_{4}(t) \ket{g_{1}, g_{2}, e_{3}}\ket{2} + C_{5}(t) \ket{e_{1}, e_{2}, g_{3}}\ket{1} + C_{6}(t) \ket{e_{1}, g_{2}, e_{3}}\ket{1} + C_{7}(t) \ket{g_{1}, e_{2}, e_{3}}\ket{1} + C_{8}(t) \ket{e_{1}, e_{2}, e_{3}}\ket{0}$.
+
+The Hamiltonian of the system is $\hat{H} = \sum_{i = 1}^{3} \hbar \omega_{i} \hat{\sigma}_{i+}\hat{\sigma}_{i-} + \sum_{i = 1}^{3} \hbar \omega_{i} \hat{a}_{i}^{+}\hat{a}_{i}^{-} + \sum_{i = 1}^{3} \hbar G_{i} (\hat{a}_{i}^{+}\hat{\sigma}_{i-} + \hat{a}_{i}^{-}\hat{\sigma}_{i+})$, where $\omega_{i}$ is the frequency of the $i$th photon, $\hat{\sigma}_{i+}$ is the atomic raising operator of the $i$th atom, $\hat{\sigma}_{i-}$ is the atomic lowering operator of the $i$th atom, $\hat{a}_{i}^{+}$ is the photon creation operator of the $i$th photon, $\hat{a}_{i}^{-}$ is the photon annihilation operator of the $i$th photon, and $G_{i}$ is the strength of the interaction between the $i$th atom and the $i$th photon. 
+
+Inserting the state and Hamiltonian into the Schrödinger equation yields $i \hbar \frac{\partial C_{1}(t)}{\partial t} \ket{g_{1}, g_{2}, g_{3}}\ket{3} + i \hbar \frac{\partial C_{2}(t)}{\partial t} \ket{e_{1}, g_{2}, g_{3}}\ket{2} + i \hbar \frac{\partial C_{3}(t)}{\partial t} \ket{g_{1}, e_{2}, g_{3}}\ket{2} + i \hbar \frac{\partial C_{4}(t)}{\partial t} \ket{g_{1}, g_{2}, e_{3}}\ket{2} + i \hbar \frac{\partial C_{5}(t)}{\partial t} \ket{e_{1}, e_{2}, g_{3}}\ket{1} + i \hbar \frac{\partial C_{6}(t)}{\partial t} \ket{e_{1}, g_{2}, e_{3}}\ket{1} + i \hbar \frac{\partial C_{7}(t)}{\partial t} \ket{g_{1}, e_{2}, e_{3}}\ket{1} + i \hbar \frac{\partial C_{8}(t)}{\partial t} \ket{e_{1}, e_{2}, e_{3}}\ket{0} = (\hbar \omega_{1} \hat{\sigma}_{1+}\hat{\sigma}_{1-} + \hbar \omega_{2} \hat{\sigma}_{2+}\hat{\sigma}_{2-} + \hbar \omega_{3} \hat{\sigma}_{3+}\hat{\sigma}_{3-} + \hbar \omega_{4} \hat{\sigma}_{4+}\hat{\sigma}_{4-} + \hbar \omega_{5} \hat{\sigma}_{5+}\hat{\sigma}_{5-} + \hbar \omega_{6} \hat{\sigma}_{6+}\hat{\sigma}_{6-} + \hbar \omega_{7} \hat{\sigma}_{7+}\hat{\sigma}_{7-} + \hbar \omega_{8} \hat{\sigma}_{8+}\hat{\sigma}_{8-} + \hbar \omega_{1}\hat{a}_{1}^{+}\hat{a}_{1}^{-} + \hbar \omega_{2}\hat{a}_{2}^{+}\hat{a}_{2}^{-} + \hbar \omega_{3}\hat{a}_{3}^{+}\hat{a}_{3}^{-} + \hbar \omega_{4}\hat{a}_{4}^{+}\hat{a}_{4}^{-} + \hbar \omega_{5}\hat{a}_{5}^{+}\hat{a}_{5}^{-} + \hbar \omega_{6}\hat{a}_{6}^{+}\hat{a}_{6}^{-} + \hbar \omega_{7}\hat{a}_{7}^{+}\hat{a}_{7}^{-} + \hbar \omega_{8}\hat{a}_{8}^{+}\hat{a}_{8}^{-} + \hbar G_{1}\hat{a}_{1}^{+}\hat{\sigma}_{1-} + G_{1}\hat{a}_{1}^{-}\hat{\sigma}_{1+} + \hbar G_{2}\hat{a}_{2}^{+}\hat{\sigma}_{2-} + G_{2}\hat{a}_{2}^{-}\hat{\sigma}_{2+} + \hbar G_{3}\hat{a}_{3}^{+}\hat{\sigma}_{3-} + G_{3}\hat{a}_{3}^{-}\hat{\sigma}_{3+} + \hbar G_{4}\hat{a}_{4}^{+}\hat{\sigma}_{4-} + G_{4}\hat{a}_{4}^{-}\hat{\sigma}_{4+} + \hbar G_{5}\hat{a}_{5}^{+}\hat{\sigma}_{5-} + G_{5}\hat{a}_{5}^{-}\hat{\sigma}_{5+} + \hbar G_{6}\hat{a}_{6}^{+}\hat{\sigma}_{6-} + G_{6}\hat{a}_{6}^{-}\hat{\sigma}_{6+} + \hbar G_{7}\hat{a}_{7}^{+}\hat{\sigma}_{7-} + G_{7}\hat{a}_{7}^{-}\hat{\sigma}_{7+} + \hbar G_{8}\hat{a}_{8}^{+}\hat{\sigma}_{8-} + G_{8}\hat{a}_{8}^{-}\hat{\sigma}_{8+})(C_{1}(t) \ket{g_{1}, g_{2}, g_{3}}\ket{3} + C_{2}(t) \ket{e_{1}, g_{2}, g_{3}}\ket{2} + C_{3}(t) \ket{g_{1}, e_{2}, g_{3}}\ket{2} + C_{4}(t) \ket{g_{1}, g_{2}, e_{3}}\ket{2} + C_{5}(t) \ket{e_{1}, e_{2}, g_{3}}\ket{1} + C_{6}(t) \ket{e_{1}, g_{2}, e_{3}}\ket{1} + C_{7}(t) \ket{g_{1}, e_{2}, e_{3}}\ket{1} + C_{8}(t) \ket{e_{1}, e_{2}, e_{3}}\ket{0})$.
 
 \end{document}
