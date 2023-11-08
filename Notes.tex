@@ -109,7 +109,7 @@ We can express the following quantum state, $\ket{\Psi} = \alpha{\ket{0}} + \bet
         \draw[->] (0,0)--(1.2,0) node[right] {$\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$};
         \draw[->] (0,0)--(0,1.2) node[above] {$\ket{0}$};
         \draw[->] (0,0)--(0,-1.2) node[below] {$\ket{1}$};
-        \draw[->] (0,0)--(-1.2,0) node[left] {$\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}$};
+        \draw[->] (0,0)--(-1.2,0) node[left] {$\frac{1}{\sqrt{2}}(\ket{0} - \ket{1})$};
         % \draw[->] (0,0)--(-.75,-.5) node[below left] {$x$};
         % Vector and label node
         % \draw[->] (0,0)--(.5,0.866);
@@ -353,6 +353,16 @@ The state of the system is $\Psi(t) = C_{e}(t)\ket{e}\ket{0} + C_{g}(t)\ket{g}\k
 
 Multiplying the expressions of the prior equation would yield $\hbar \Omega \hat{\sigma}_{+}\hat{\sigma}_{-} C_{e}(t) \ket{e}\ket{0} + \hbar \Omega \hat{\sigma}_{+}\hat{\sigma}_{-} C_{g}(t) \cancelto{0}{\ket{g}}\ket{1} + \hbar \omega \hat{a}^{+}\hat{a}^{-} C_{e}(t) \ket{e}\cancelto{0}{\ket{0}} + \hbar \omega \hat{a}^{+}\hat{a}^{-} C_{g}(t) \ket{g}\ket{1} + \hbar G \hat{a}^{+}\hat{\sigma}_{-} C_{e}(t) \ket{e}\ket{0} + \hbar G \hat{a}^{+}\hat{\sigma}_{-} C_{g}(t) \cancelto{0}{\ket{g}}\cancelto{0}{\ket{1}} + \hbar G \hat{a}^{-}\hat{\sigma}_{+} C_{e}(t) \cancelto{0}{\ket{e}}\cancelto{0}{\ket{0}} + \hbar G \hat{a}^{-}\hat{\sigma}_{+} C_{g}(t) \ket{g}\ket{1} = \hbar \Omega C_{e}(t) \ket{e}\ket{0} + \hbar \omega C_{g}(t) \ket{g}\ket{1} + \hbar G C_{e}(t) \ket{g}\ket{1} + \hbar G C_{g}(t) \ket{e}\ket{0}$, which is to say that $i \hbar \frac{\partial C_{e}(t)}{\partial t}\ket{e}\ket{0} + i \hbar \frac{\partial C_{g}(t)}{\partial t}\ket{g}\ket{1} = \hbar \Omega C_{e}(t) \ket{e}\ket{0} + \hbar \omega C_{g}(t) \ket{g}\ket{1} + \hbar G C_{e}(t) \ket{g}\ket{1} + \hbar G C_{g}(t) \ket{e}\ket{0}$. Projection from the left side by $\bra{e}\bra{0}$ would yield $i \hbar \frac{\partial C_{e}(t)}{\partial t} = \hbar \Omega C_{e}(t) + 0 + 0 + \hbar G C_{g}(t)$, while projection from the left side by $\bra{g}\bra{1}$ would yield $i \hbar \frac{\partial C_{g}(t)}{\partial t} = 0 + \hbar \omega C_{g}(t) + \hbar G C_{e}(t) + 0$.
 
+\begin{gather*}
+\hat{\rho}_{\text{total}} = \ket{\Psi}\bra{\Psi} = (C_{e}(t)\ket{e; 0} + C_{g}(t)\ket{g; 1})(C_{e}^{*}(t)\bra{e; 0}\\
+ + C_{g}^{*}(t)\ket{g; 1}) = C_{e}(t)C_{e}^{*}(t)\ket{e; 0}\bra{e; 0} + C_{e}(t)C_{g}^{*}(t)\ket{e; 0}\bra{g; 1}\\
+ + C_{g}(t)C_{e}^{*}(t)\ket{g; 1}\bra{e; 0} + C_{g}(t)C_{g}^{*}(t)\ket{g; 1}\bra{g; 1}\\
+\hat{\rho}_{1} = \mathrm{tr}\{ \hat{\rho}_{\text{total}} \} = \braket{0 \mid \hat{\rho}_{\text{total}} \mid 0} + \braket{1 \mid \hat{\rho}_{\text{total}} \mid 1}\\
+ = \braket{0 \mid (C_{e}(t)C_{e}^{*}(t)\ket{e; 0}\bra{e; 0} + C_{e}(t)C_{g}^{*}(t)\ket{e; 0}\bra{g; 1} + C_{g}(t)C_{e}^{*}(t)\ket{g; 1}\bra{e; 0} + C_{g}(t)C_{g}^{*}(t)\ket{g; 1}\bra{g; 1}) \mid 0}\\
+  + \braket{1 \mid (C_{e}(t)C_{e}^{*}(t)\ket{e; 0}\bra{e; 0} + C_{e}(t)C_{g}^{*}(t)\ket{e; 0}\bra{g; 1} + C_{g}(t)C_{e}^{*}(t)\ket{g; 1}\bra{e; 0} + C_{g}(t)C_{g}^{*}(t)\ket{g; 1}\bra{g; 1}) \mid 1}\\
+  = C_{e}(t)C_{e}^{*}(t)\ket{e}\bra{e} + C_{g}(t)C_{g}^{*}(t)\ket{g}\bra{g}
+\end{gather*}
+
 \subsection{Monomodal Three-Photon Problem}
 
 The state of the system is $\ket{\Psi(t)} = C_{1}(t) \ket{g_{1}, g_{2}, g_{3}; 3} + C_{2}(t) \ket{e_{1}, g_{2}, g_{3}; 2} + C_{3}(t) \ket{g_{1}, e_{2}, g_{3}; 2} + C_{4}(t) \ket{g_{1}, g_{2}, e_{3}; 2} + C_{5}(t) \ket{e_{1}, e_{2}, g_{3}; 1} + C_{6}(t) \ket{e_{1}, g_{2}, e_{3}; 1} + C_{7}(t) \ket{g_{1}, e_{2}, e_{3}; 1} + C_{8}(t) \ket{e_{1}, e_{2}, e_{3}; 0}$.
@@ -410,7 +420,46 @@ In summary:
     \frac{\partial C_{5}(t)}{\partial t} = -i(\Omega_{1}C_{5}(t) + \Omega_{2}C_{5}(t) + \omega C_{5}(t) + \sqrt{2} G_{1}C_{3}(t) + \sqrt{2} G_{2}C_{2}(t) + G_{3}C_{8}(t))\\
     \frac{\partial C_{6}(t)}{\partial t} = -i(\Omega_{1}C_{6}(t) + \Omega_{3}C_{6}(t) + \omega C_{6}(t) + \sqrt{2} G_{1}C_{4}(t) + G_{2}C_{8}(t) + \sqrt{2} G_{3}C_{2}(t))\\
     \frac{\partial C_{7}(t)}{\partial t} = -i(\Omega_{2}C_{7}(t) + \Omega_{3}C_{7}(t) + \omega C_{7}(t) + G_{1}C_{8}(t) + \sqrt{2} G_{2}C_{4}(t) + \sqrt{2} G_{3}C_{3}(t))\\
-    \frac{\partial C_{8}(t)}{\partial t} = -i(\Omega_{1}C_{8}(t) + \Omega_{2}C_{8}(t) + \Omega_{3}C_{8}(t) + G_{1}C_{7}(t) + G_{2}C_{6}(t) + G_{3}C_{5}(t))
+    \frac{\partial C_{8}(t)}{\partial t} = -i(\Omega_{1}C_{8}(t) + \Omega_{2}C_{8}(t) + \Omega_{3}C_{8}(t) + G_{1}C_{7}(t) + G_{2}C_{6}(t) + G_{3}C_{5}(t)).
 \end{gather*}
+
+
+$\hat{\rho}_{\text{total}} = \ket{\Psi}\bra{\Psi} = (C_{1}(t) \ket{g_{1}, g_{2}, g_{3}; 3} + C_{2}(t) \ket{e_{1}, g_{2}, g_{3}; 2} + C_{3}(t) \ket{g_{1}, e_{2}, g_{3}; 2} + C_{4}(t) \ket{g_{1}, g_{2}, e_{3}; 2}\\
+     + C_{5}(t) \ket{e_{1}, e_{2}, g_{3}; 1} + C_{6}(t) \ket{e_{1}, g_{2}, e_{3}; 1} + C_{7}(t) \ket{g_{1}, e_{2}, e_{3}; 1} + C_{8}(t) \ket{e_{1}, e_{2}, e_{3}; 0})\\
+    (C_{1}^{*}(t) \bra{g_{1}, g_{2}, g_{3}; 3} + C_{2}^{*}(t) \bra{e_{1}, g_{2}, g_{3}; 2} + C_{3}^{*}(t) \bra{g_{1}, e_{2}, g_{3}; 2} + C_{4}^{*}(t) \bra{g_{1}, g_{2}, e_{3}; 2}\\
+     + C_{5}^{*}(t) \bra{e_{1}, e_{2}, g_{3}; 1} + C_{6}^{*}(t) \bra{e_{1}, g_{2}, e_{3}; 1} + C_{7}^{*}(t) \bra{g_{1}, e_{2}, e_{3}; 1} + C_{8}^{*}(t) \bra{e_{1}, e_{2}, e_{3}; 0})\\
+     = C_{1}(t)C_{1}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{1}(t)C_{2}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{e_{1}, g_{2}, g_{3}; 2} + C_{1}(t)C_{3}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{g_{1}, e_{2}, g_{3}; 2} + C_{1}(t)C_{4}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{g_{1}, g_{2}, e_{3}; 2}\\
+      + C_{1}(t)C_{5}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{e_{1}, e_{2}, g_{3}; 1} + C_{1}(t)C_{6}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{e_{1}, g_{2}, e_{3}; 1}\\
+       + C_{1}(t)C_{7}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{g_{1}, e_{2}, e_{3}; 1} + C_{1}(t)C_{8}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{e_{1}, e_{2}, e_{3}; 0}\\
+       C_{2}(t)C_{1}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{2}(t)C_{2}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{e_{1}, g_{2}, g_{3}; 2}\\
+       C_{2}(t)C_{3}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{g_{1}, e_{2}, g_{3}; 2} + C_{2}(t)C_{4}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{g_{1}, g_{2}, e_{3}; 2}\\
+       C_{2}(t)C_{5}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{e_{1}, e_{2}, g_{3}; 1} + C_{2}(t)C_{6}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{e_{1}, g_{2}, e_{3}; 1}\\
+       C_{2}(t)C_{7}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{g_{1}, e_{2}, e_{3}; 1} + C_{2}(t)C_{8}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{e_{1}, e_{2}, e_{3}; 0}\\
+       C_{3}(t)C_{1}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{3}(t)C_{2}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{e_{1}, g_{2}, g_{3}; 2}\\
+       C_{3}(t)C_{3}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{g_{1}, e_{2}, g_{3}; 2} + C_{3}(t)C_{4}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{g_{1}, g_{2}, e_{3}; 2}\\
+       C_{3}(t)C_{5}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{e_{1}, e_{2}, g_{3}; 1} + C_{3}(t)C_{6}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{e_{1}, g_{2}, e_{3}; 1}\\
+       C_{3}(t)C_{7}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{g_{1}, e_{2}, e_{3}; 1} + C_{3}(t)C_{8}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{e_{1}, e_{2}, e_{3}; 0}\\
+       C_{4}(t)C_{1}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{4}(t)C_{2}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{e_{1}, g_{2}, g_{3}; 2}\\
+       C_{4}(t)C_{3}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{g_{1}, e_{2}, g_{3}; 2} + C_{4}(t)C_{4}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{g_{1}, g_{2}, e_{3}; 2}\\
+       C_{4}(t)C_{5}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{e_{1}, e_{2}, g_{3}; 1} + C_{4}(t)C_{6}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{e_{1}, g_{2}, e_{3}; 1}\\
+       C_{4}(t)C_{7}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{g_{1}, e_{2}, e_{3}; 1} + C_{4}(t)C_{8}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{e_{1}, e_{2}, e_{3}; 0}\\
+       C_{5}(t)C_{1}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{5}(t)C_{2}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{e_{1}, g_{2}, g_{3}; 2}\\
+       C_{5}(t)C_{3}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{g_{1}, e_{2}, g_{3}; 2} + C_{5}(t)C_{4}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{g_{1}, g_{2}, e_{3}; 2}\\
+       C_{5}(t)C_{5}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{e_{1}, e_{2}, g_{3}; 1} + C_{5}(t)C_{6}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{e_{1}, g_{2}, e_{3}; 1}\\
+       C_{5}(t)C_{7}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{g_{1}, e_{2}, e_{3}; 1} + C_{5}(t)C_{8}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{e_{1}, e_{2}, e_{3}; 0}\\
+       C_{6}(t)C_{1}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{6}(t)C_{2}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{e_{1}, g_{2}, g_{3}; 2}\\
+       C_{6}(t)C_{3}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{g_{1}, e_{2}, g_{3}; 2} + C_{6}(t)C_{4}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{g_{1}, g_{2}, e_{3}; 2}\\
+       C_{6}(t)C_{5}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{e_{1}, e_{2}, g_{3}; 1} + C_{6}(t)C_{6}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{e_{1}, g_{2}, e_{3}; 1}\\
+       C_{6}(t)C_{7}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{g_{1}, e_{2}, e_{3}; 1} + C_{6}(t)C_{8}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{e_{1}, e_{2}, e_{3}; 0}\\
+       C_{7}(t)C_{1}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{7}(t)C_{2}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{e_{1}, g_{2}, g_{3}; 2}\\
+       C_{7}(t)C_{3}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{g_{1}, e_{2}, g_{3}; 2} + C_{7}(t)C_{4}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{g_{1}, g_{2}, e_{3}; 2}\\
+       C_{7}(t)C_{5}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{e_{1}, e_{2}, g_{3}; 1} + C_{7}(t)C_{6}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{e_{1}, g_{2}, e_{3}; 1}\\
+       C_{7}(t)C_{7}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{g_{1}, e_{2}, e_{3}; 1} + C_{7}(t)C_{8}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{e_{1}, e_{2}, e_{3}; 0}\\
+       C_{8}(t)C_{1}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{8}(t)C_{2}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{e_{1}, g_{2}, g_{3}; 2}\\
+       C_{8}(t)C_{3}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{g_{1}, e_{2}, g_{3}; 2} + C_{8}(t)C_{4}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{g_{1}, g_{2}, e_{3}; 2}\\
+       C_{8}(t)C_{5}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{e_{1}, e_{2}, g_{3}; 1} + C_{8}(t)C_{6}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{e_{1}, g_{2}, e_{3}; 1}\\
+       C_{8}(t)C_{7}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{g_{1}, e_{2}, e_{3}; 1} + C_{8}(t)C_{8}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{e_{1}, e_{2}, e_{3}; 0}\\$
+
+$\hat{\rho}_{123} = \mathrm{tr}\{ \hat{\rho}_{\text{total}} \} = \braket{g_{1}, g_{2}, g_{3} \mid \hat{\rho}_{\text{total}} \mid g_{1}, g_{2}, g_{3}} + \braket{e_{1}, g_{2}, g_{3} \mid \hat{\rho}_{\text{total}} \mid e_{1}, g_{2}, g_{3}} + \braket{g_{1}, e_{2}, g_{3} \mid \hat{\rho}_{\text{total}} \mid g_{1}, e_{2}, g_{3}} + \braket{g_{1}, g_{2}, e_{3} \mid \hat{\rho}_{\text{total}} \mid g_{1}, g_{2}, e_{3}} + \braket{e_{1}, e_{2}, g_{3} \mid \hat{\rho}_{\text{total}} \mid e_{1}, e_{2}, g_{3}} + \braket{e_{1}, g_{2}, e_{3} \mid \hat{\rho}_{\text{total}} \mid e_{1}, g_{2}, e_{3}} + \braket{g_{1}, e_{2}, e_{3} \mid \hat{\rho}_{\text{total}} \mid g_{1}, e_{2}, e_{3}} + \braket{e_{1}, e_{2}, e_{3} \mid \hat{\rho}_{\text{total}} \mid e_{1}, e_{2}, e_{3}}$
 
 \end{document}
