@@ -24,6 +24,8 @@
 
 \usepackage[british]{datetime2}
 
+\usepackage[scr=rsfs]{mathalpha}
+
 \title{Notes}
 \author{Emil Sayahi}
 \date{\today}
@@ -469,5 +471,13 @@ $\hat{\rho}_{1} = \mathrm{tr}_{23}\{ \hat{\rho}_{\mathrm{total}} \} = \braket{g_
 $\hat{\rho}_{2} = \mathrm{tr}_{13}\{ \hat{\rho}_{\mathrm{total}} \} = \braket{g_{1}, g_{3} \mid \hat{\rho}_{123} \mid g_{1}, g_{3}} + \braket{e_{1}, g_{3} \mid \hat{\rho}_{123} \mid e_{1}, g_{3}} + \braket{g_{1}, e_{3} \mid \hat{\rho}_{123} \mid g_{1}, e_{3}} + \braket{e_{1}, e_{3} \mid \hat{\rho}_{123} \mid e_{1}, e_{3}}\\ = C_{1}(t)C_{1}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{3}(t)C_{3}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{g_{1}, e_{2}, g_{3}; 2}\\ + C_{2}(t)C_{2}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{e_{1}, g_{2}, g_{3}; 2} + C_{5}(t)C_{5}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{e_{1}, e_{2}, g_{3}; 1}\\ + C_{4}(t)C_{4}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{g_{1}, g_{2}, e_{3}; 2} + C_{7}(t)C_{7}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{g_{1}, e_{2}, e_{3}; 1}\\ + C_{6}(t)C_{6}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{e_{1}, g_{2}, e_{3}; 1} + C_{8}(t)C_{8}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{e_{1}, e_{2}, e_{3}; 0}$
 
 $\hat{\rho}_{3} = \mathrm{tr}_{12}\{ \hat{\rho}_{\mathrm{total}} \} = \braket{g_{1}, g_{2} \mid \hat{\rho}_{123} \mid g_{1}, g_{2}} + \braket{e_{1}, g_{2} \mid \hat{\rho}_{123} \mid e_{1}, g_{2}} + \braket{g_{1}, e_{2} \mid \hat{\rho}_{123} \mid g_{1}, e_{2}} + \braket{e_{1}, e_{2} \mid \hat{\rho}_{123} \mid e_{1}, e_{2}}\\ = C_{1}(t)C_{1}^{*}(t)\ket{g_{1}, g_{2}, g_{3}; 3}\bra{g_{1}, g_{2}, g_{3}; 3} + C_{4}(t)C_{4}^{*}(t)\ket{g_{1}, g_{2}, e_{3}; 2}\bra{g_{1}, g_{2}, e_{3}; 2}\\ + C_{2}(t)C_{2}^{*}(t)\ket{e_{1}, g_{2}, g_{3}; 2}\bra{e_{1}, g_{2}, g_{3}; 2} + C_{6}(t)C_{6}^{*}(t)\ket{e_{1}, g_{2}, e_{3}; 1}\bra{e_{1}, g_{2}, e_{3}; 1}\\ + C_{3}(t)C_{3}^{*}(t)\ket{g_{1}, e_{2}, g_{3}; 2}\bra{g_{1}, e_{2}, g_{3}; 2} + C_{7}(t)C_{7}^{*}(t)\ket{g_{1}, e_{2}, e_{3}; 1}\bra{g_{1}, e_{2}, e_{3}; 1}\\ + C_{5}(t)C_{5}^{*}(t)\ket{e_{1}, e_{2}, g_{3}; 1}\bra{e_{1}, e_{2}, g_{3}; 1} + C_{8}(t)C_{8}^{*}(t)\ket{e_{1}, e_{2}, e_{3}; 0}\bra{e_{1}, e_{2}, e_{3}; 0}$
+
+$\mathscr{F}_{\Delta} = [\frac{16}{3} \mathscr{Q} (\mathscr{Q} - \mathscr{C}_{1(23)}^{2}) (\mathscr{Q} - \mathscr{C}_{2(13)}^{2}) (\mathscr{Q} - \mathscr{C}_{3(12)}^{2})]^{\frac{1}{4}}$, where $\mathscr{Q} = \frac{1}{2}(\mathscr{C}_{1(23)}^{2} + \mathscr{C}_{2(13)}^{2} + \mathscr{C}_{3(12)}^{2})$
+
+$\mathscr{C}_{1(23)}^{2} = \sqrt{2(1 - \mathrm{tr} \{ \hat{\rho}_{1}^{2} \} )}$
+
+$\mathscr{C}_{2(13)}^{2} = \sqrt{2(1 - \mathrm{tr} \{ \hat{\rho}_{2}^{2} \} )}$
+
+$\mathscr{C}_{3(12)}^{2} = \sqrt{2(1 - \mathrm{tr} \{ \hat{\rho}_{3}^{2} \} )}$
 
 \end{document}
